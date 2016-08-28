@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new
-    @user.attributes = use_params
+    @user.attributes = user_params
     if @user.save
       redirect_to login_path, notice: "注册成功，请登录"
     else
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   private
-  def use_params
+  def user_params
     params.require(:user).permit(:username, :password, :password_confirmation)
   end
 end
